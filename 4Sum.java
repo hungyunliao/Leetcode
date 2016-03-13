@@ -8,7 +8,7 @@ public class Solution {
         
         Arrays.sort(nums);
         
-        int index1 = 0, index2 = index1 + 1, index3 = index2 + 1, len = nums.length, index4 = (index3 + len) / 2;
+        int index1 = 0, index2 = index1 + 1, index3 = index2 + 1, index4 = index3 + 1, len = nums.length;
         
         while(true) {
             if(nums[index4 - 1] == target - (nums[index1] + nums[index2] + nums[index3])) {
