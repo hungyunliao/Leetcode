@@ -9,7 +9,7 @@ public class Solution {
         else if(arr[left] == target) { return left; }
         
         int mid = (left + right) / 2;
-        if(mid == left) { return arr[mid] > target ? left : left + 1; }
+        if(mid == left) { return arr[left] > target ? left : left + 1; }
         
         if(arr[mid] > target) { return bSearch(arr, left, mid, target); }
         else if(arr[mid] < target) { return bSearch(arr, mid, right, target); }
