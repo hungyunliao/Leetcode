@@ -39,14 +39,6 @@ public class Solution {
             }
             return;
         }
-        // if(m == 3) {
-        //     count += cal(n);
-        //     return;
-        // }
-        // if(n == 3) {
-        //     count += cal(m);
-        //     return;
-        // }
         
         if(m < 1 || n < 1) { return; }
         maze(m - 1, n);
