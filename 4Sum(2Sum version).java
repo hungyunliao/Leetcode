@@ -31,7 +31,7 @@ public class Solution {
                             ansList.add(list);
                         }
                         index3++;
-                        index4--;
+                        index4--; //
                     }
                     if(index3 >= index4) { break; }
                 }
