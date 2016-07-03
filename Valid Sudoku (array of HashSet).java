@@ -2,7 +2,7 @@ public class Solution {
     public boolean isValidSudoku(char[][] board) {
         boolean isSuccess = true;
         // use the wildcard, but you will lose the type-safety
-        HashSet<?>[] rows = new HashSet<?>[27];
+        HashSet<?>[] rows = new HashSet<?>[27]; // Wildcard: It's written Collection<?> (pronounced "collection of unknown"), that is, a collection whose element type matches anything. It's called a wildcard type for obvious reasons.
         for (int i = 0; i < rows.length; ++i) { rows[i] = new HashSet<Character>(); }
         
         // HashSet 0 - 8 are for Length comparison
