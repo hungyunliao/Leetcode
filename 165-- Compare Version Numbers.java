@@ -1,40 +1,43 @@
 public class Solution {
     public int compareVersion(String version1, String version2) {
-        char[] v1 = version1.toCharArray();
-        char[] v2 = version2.toCharArray();
-        double v11 = 0, v22 = 0;
-        int divide = 1;
-        int x = 1;
-        for (int i = version1.length() - 1; i > -1; i--) {
-            if (version1.charAt(i) == '.') {
-                divide = version1.length() - 1 - i;
-                continue;
+        int v1num = 0, v2num = 0;
+        Stack<Integer> stk = new Stack<>();
+        int pow = 1;
+        
+        int i = 0, j = 0;
+        
+        while (i < version1.length() || j < version2.length()) {
+            while (i < version1.length() && version1.charAt(i) != '.') {
+                stk.push(version1.charAt(i) - '0');
+                i++;
             }
-            v11 += (version1.charAt(i) - '0') * x;
-            x *= 10;
-        }
-        int versionNo1 = (int)(v11/Math.pow(10, divide));
-        v11 = v11 - versionNo1 * Math.pow(10, divide);
-        x = 1;
-        
-        for (int i = version2.length() - 1; i > -1; i--) {
-            if (version2.charAt(i) == '.') {
-                divide = version2.length() - 1 - i;
-                continue;
+            while (stk.size() != 0) {
+                v1num += stk.pop() * pow;
+                pow *= 10;
             }
-            v22 += (version2.charAt(i) - '0') * x;
-            x *= 10;
+            pow = 1;
+            
+            while (j < version2.length() && version2.charAt(j) != '.') {
+                stk.push(version2.charAt(j) - '0');
+                j++;
+            }
+            while (stk.size() != 0) {
+                v2num += stk.pop() * pow;
+                pow *= 10;
+            }
+            pow = 1;
+            
+            if (v1num > v2num) {
+                return 1;
+            } else if (v1num < v2num) {
+                return -1;
+            } else {
+                if (i < version1.length()) i++;
+                if (j < version2.length()) j++;
+            }
+            
         }
-        int versionNo2 = (int)(v22/Math.pow(10, divide));
-        v22 = v22 - versionNo2 * Math.pow(10, divide);
+        return 0;
         
-        // System.out.println(v11);
-        // System.out.println(v22);
-        
-        if (versionNo1 > versionNo2) {
-            return 1;
-        } else if (versionNo1 < versionNo2) {
-            return -1;
-        } else return v11 > v22 ? 1 : (v11 == v22 ? 0 : -1);
     }
 }
