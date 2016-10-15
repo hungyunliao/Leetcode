@@ -8,6 +8,7 @@ public class Solution {
         memo[0] = 1; // boarder case
         
         /*
+            DP:
             numArr = [1, 2, 3]
         
                   V (target - num[2])  +
