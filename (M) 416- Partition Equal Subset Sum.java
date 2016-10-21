@@ -34,11 +34,11 @@ public class Solution {
                     if(nums[x] > sum/2) {
                         return false;
                     }
-                    if((i - nums[x]) < 0) {
-                        //opt[i][j] = false || opt[i][j];
-                        continue;
+                    if((i - nums[x]) >= 0) {
+                        opt[i][j] = opt[i][j - 1] || opt[i - nums[x]][j - 1];
                     }
-                    opt[i][j] = opt[i][j - 1] || opt[i - nums[x]][j - 1];
+                    else {
+                        opt[i][j] = opt[i][j - 1];
                 }
             }
         }
