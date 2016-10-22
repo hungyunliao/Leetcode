@@ -10,17 +10,15 @@ public class Solution {
                 if(stk.size() > 0) {
                     stk.pop();
                 }
-            } else if(s.equals(".")) {
-                continue;
-            } else {
+            } else if(!s.equals(".")) {
                 stk.push(s);
-            }
+            } 
         }
-        String ans = stk.size() == 0? "/":"";
+        String ans = "";
         while(stk.size() > 0) {
             ans = "/" + stk.pop() + ans;
         }
         
-        return ans;
+        return ans.equals("")? "/":ans;
     }
 }
