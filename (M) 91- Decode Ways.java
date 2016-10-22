@@ -8,23 +8,26 @@ public class Solution {
         opt[1] = 1;
         
         for(int i = 2; i < opt.length; i++) {
+            char currChar = s.charAt(i - 1);
+            char prevChar = s.charAt(i - 2);
+            int currCharInt = Character.getNumericValue(currChar);
+            int prevCharInt = Character.getNumericValue(prevChar);
+            int combineInt = prevCharInt * 10 + currCharInt;
 
-            if(s.charAt(i - 1) == '0' ) {
-                if(s.charAt(i - 2) == '0') { // two consecutive 0 would form no result.
+            if(currChar == '0' ) {
+                if(prevChar == '0' || prevCharInt > 2) { // two consecutive 0 would form no result. or 30, 40, 50 ... are not available.
                     return 0;
                 }
-                if(Character.getNumericValue(s.charAt(i - 2)) > 2) { // 50, 70, 80 etc are not available.
-                    return 0;
-                }
-                opt[i] = opt[i -2];
-                continue;
+                
+                opt[i] = opt[i - 2];
+                
             } else {
                 opt[i] = opt[i - 1];
-            }
-            
-            if((Character.getNumericValue(s.charAt(i - 2)) * 10 +  Character.getNumericValue(s.charAt(i - 1))) <= 26 &&
-            (Character.getNumericValue(s.charAt(i - 2)) * 10 +  Character.getNumericValue(s.charAt(i - 1))) >= 1 && s.charAt(i-2) != '0') {
-                opt[i] += opt[i - 2];
+                
+                if(combineInt <= 26 && combineInt >= 1 && prevChar != '0') {
+                    opt[i] += opt[i - 2];
+                }
+                
             }
         }
         
