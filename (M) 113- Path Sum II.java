@@ -19,18 +19,18 @@ public class Solution {
         return ans;
     }
     
-    private void helper(List<List<Integer>> gl, List<Integer> list,TreeNode node, int sum) {
+    private void helper(List<List<Integer>> ansList, List<Integer> list,TreeNode node, int sum) {
         if(node.left == null && node.right == null) {
             if(sum - node.val == 0) {
                 List<Integer> subAns = new ArrayList<Integer>(list);
                 subAns.add(new Integer(node.val));
-                gl.add(subAns);
+                ansList.add(subAns);
             } 
             return;
         }
         list.add(new Integer(node.val));
-        if(node.left != null) helper(gl, list, node.left, sum - node.val);
-        if(node.right != null) helper(gl, list, node.right, sum - node.val);
+        if(node.left != null) helper(ansList, list, node.left, sum - node.val);
+        if(node.right != null) helper(ansList, list, node.right, sum - node.val);
         list.remove(list.size() - 1); // before returning from this node (two of its children are all visited, remove this node from the reference array.)
         return;
     }
