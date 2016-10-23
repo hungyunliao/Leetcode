@@ -15,6 +15,7 @@ public class Solution {
         int[] dp = new int[total];
         dp[0] = triangle.get(0).get(0);
         
+        // opt[row, col] = value[row, col] + min(  opt[row - 1, col - 1], opt[row - 1][col]  )
         for(int row = 1; row < depth; row++) {
             for(int col = 0; col < triangle.get(row).size(); col++) {
                 int index = rowToIndex(row, col);
