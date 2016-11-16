@@ -27,7 +27,8 @@ public class Solution {
             index.put(intervals[i], i);
         }
         
-        // sorting by the finish time
+        // sorting by the start time. Set the finish time as the target, and use binary search to find the interval with the start time that matches the finish time.
+        // The last one must always be -1 since there is no interval starting after it.
         Collections.sort(start, new StartTimeComparator());
         
         for(int i = 0; i < intervals.length - 1; i++) {
