@@ -65,3 +65,13 @@ class StartTimeComparator implements Comparator<Interval> {
         return a.start < b.start ? -1 : a.start == b.start ? 0 : 1;
     }
 }
+
+/*
+Another way to implement comparator using closure
+
+Arrays.sort(intervals, new Comparator<Interval>() {
+    public int compare(Interval i1, Interval i2) {
+        return i1.start - i2.start;
+    }
+}); 
+*/
