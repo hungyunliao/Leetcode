@@ -5,10 +5,10 @@ public class Solution {
         }
         Arrays.sort(points, new Comparator<int[]>() {
             public int compare(int[] o1, int[] o2) {
-                if(Integer.valueOf(o1[0]).equals(o2[0])) {
-                    return Integer.valueOf(o1[1]).compareTo(o2[1]);
+                if(o1[0] == o2[0]) {
+                    return o1[1] - o2[1];
                 }
-                return Integer.valueOf(o1[0]).compareTo(o2[0]);
+                return o1[0] - o2[0];
             }
         });
         int baseIndex = 0, ans = 0;
