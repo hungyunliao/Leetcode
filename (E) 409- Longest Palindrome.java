@@ -1,9 +1,9 @@
 public class Solution {
     public int longestPalindrome(String s) {
-        // create an array w/ size of 52 (upper case and lower case)
+        // create an array w/ size of 58 (upper case and lower case, and some special characters with ascii inbetween upper and lower cases)
         // count the number of each characters
         // if one character appears 2*n times, then 2*n can be added to ans
-        // at most one character can appear once
+        // at most one character can appear once (isSingle)
         int[] freq = new int[58];
         boolean isSingle = false;
         int ans = 0;
